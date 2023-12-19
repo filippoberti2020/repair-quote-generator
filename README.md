@@ -30,6 +30,12 @@ MobileRepair Quotes simplifies the process of obtaining repair quotes for your m
 
 3. Explore the website and start generating repair quotes!
 
+
+## Try it Out
+
+Take a look and try the Repair Quote Price List Generator example website [here](https://repair-quote-generator.vercel.app/).
+
+
 ## Configuration
 
 - Update the `brands.json` file to manage device brands, models, and repair prices.
