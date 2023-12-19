@@ -3,17 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dropdown Select Boxes</title>
+  <title>Repair Quote Price List Generator</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      text-align: center;
+	  font-family: 'San Francisco', Arial, sans-serif; /* Use San Francisco font if available, otherwise fallback to Arial and generic sans-serif */
+   
+    }
+
+    h2 {
+      color: white;
+      font-weight: bold;
+      font-size: small;
+      margin-bottom: 10px;
+    }
+
+    label, select {
+      display: block;
+      margin: 10px auto;
+    }
+
+     select {
+      width: 343px;
+      padding: 15px;
+      background-color: black;
+      border: 0.1px solid white; /* Very thin white border */
+      border-radius: 5px;
+      box-sizing: border-box;
+      color: white; /* Text color */
+    }
+  </style>
 </head>
 <body>
 
-  <label for="brandSelect">Scegli il marchio:</label>
-  <select id="brandSelect"></select>
+  <h2>Get a Quote</h2>
+  <p>Make your selections below</p>
 
-  <label for="modelSelect">Scegli il modello:</label>
-  <select id="modelSelect" disabled></select>
+ <div>
+  <select id="brandSelect">
+  <option selected disabled>Choose the brand</option></select>
 
+  <select id="modelSelect" disabled> <option selected disabled>Choose the model</option></select>
+</div>
   <script src="script.js"></script>
 </body>
 </html>
-
