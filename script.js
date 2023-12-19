@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
              if (!modelsSelect.disabled) {
 	        modelsSelect.innerHTML = '';
 	        repairsSelect.innerHTML = ''; // Clear repairs when changing brand
-
+ 		}
 
             // Populate model select options
             modelsData[selectedBrand].forEach(model => {
