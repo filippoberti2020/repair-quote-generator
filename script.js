@@ -24,8 +24,10 @@ document.addEventListener('DOMContentLoaded', function () {
           .then(response => response.json())
           .then(modelsData => {
             // Clear previous models
-            modelsSelect.innerHTML = '';
-            repairsSelect.innerHTML = ''; // Clear repairs when changing brand
+             if (!modelsSelect.disabled) {
+	        modelsSelect.innerHTML = '';
+	        repairsSelect.innerHTML = ''; // Clear repairs when changing brand
+
 
             // Populate model select options
             modelsData[selectedBrand].forEach(model => {
