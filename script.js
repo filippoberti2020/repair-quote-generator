@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
   const brandsSelect = document.getElementById('brandSelect');
   const modelsSelect = document.getElementById('modelSelect');
-  const repairsSelect = document.getElementById('repairSelect');
+ const repairsContainer = document.getElementById('repairsContainer'); // Add this line
+
 
   // Load brands from the JSON
   fetch('brands.json')
@@ -53,19 +54,19 @@ document.addEventListener('DOMContentLoaded', function () {
         fetch('repairs.json')
           .then(response => response.json())
           .then(repairsData => {
-            // Clear previous repairs
-            repairsSelect.innerHTML = '';
+            // Clear previous repairs text
+            repairsContainer.textContent = '';
 
-            // Populate repair select options
+            // Display repairs text
             repairsData[selectedModel].forEach(repair => {
-              const option = document.createElement('option');
-              option.value = repair.name;
-              option.text = repair.name + ' - $' + repair.price;
-              repairsSelect.add(option);
-            });
+              const repairText = `${repair.name} - $${repair.price}`;
+              const repairTextNode = document.createTextNode(repairText);
+              repairsContainer.appendChild(repairTextNode);
 
-            // Enable the repair select
-            repairsSelect.disabled = false;
+              // Add a line break after each repair text
+              const lineBreak = document.createElement('br');
+              repairsContainer.appendChild(lineBreak);
+            });
           })
           .catch(error => console.error('Error fetching repairs data:', error));
       });
