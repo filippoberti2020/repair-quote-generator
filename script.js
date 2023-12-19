@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Enable the model select
             modelsSelect.disabled = false;
+            modelsSelect.dispatchEvent(new Event('change')); // Trigger change event to update repairs select
           })
           .catch(error => console.error('Error fetching models data:', error));
       });
@@ -68,4 +69,3 @@ document.addEventListener('DOMContentLoaded', function () {
     })
     .catch(error => console.error('Error fetching brands data:', error));
 });
-
