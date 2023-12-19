@@ -29,14 +29,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Populate model select options
             modelsData[selectedBrand].forEach(model => {
-              const option = document.createElement('option');
-              option.value = model;
-              option.text = model;
-              modelsSelect.add(option);
-            });
+		        const option = document.createElement('option');
+		        option.value = model;
+		        option.text = model;
+		        modelsSelect.add(option);
+		        });
 
             // Enable the model select
             modelsSelect.disabled = false;
+            modelsSelect.selectedIndex = -1; // Add this line to reset the selected index
             modelsSelect.dispatchEvent(new Event('change')); // Trigger change event to update repairs select
           })
           .catch(error => console.error('Error fetching models data:', error));
