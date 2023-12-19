@@ -1,49 +1,71 @@
 document.addEventListener('DOMContentLoaded', function () {
-  // Fetch data from JSON file
+  const brandsSelect = document.getElementById('brandSelect');
+  const modelsSelect = document.getElementById('modelSelect');
+  const repairsSelect = document.getElementById('repairSelect');
+
+  // Load brands from the JSON
   fetch('brands.json')
     .then(response => response.json())
     .then(data => {
-      // Populate brand dropdown
-      const brandSelect = document.getElementById('brandSelect');
-      data.brands.forEach((brand, index) => {
+      // Populate brand select options
+      data.brands.forEach(brand => {
         const option = document.createElement('option');
-        option.value = index;
+        option.value = brand;
         option.text = brand;
-        brandSelect.appendChild(option);
+        brandsSelect.add(option);
       });
 
-      // Add event listener for brand selection
-      brandSelect.addEventListener('change', function () {
-        const selectedBrandIndex = this.value;
-        const selectedBrand = data.brands[selectedBrandIndex];
+      // Event listener for brand selection
+      brandsSelect.addEventListener('change', function () {
+        const selectedBrand = this.value;
 
-        // Enable the model dropdown and populate it with models based on the selected brand
-        const modelSelect = document.getElementById('modelSelect');
-        modelSelect.innerHTML = ''; // Clear previous options
+        // Load models for the selected brand from the JSON
+        fetch('models.json')
+          .then(response => response.json())
+          .then(modelsData => {
+            // Clear previous models
+            modelsSelect.innerHTML = '';
+            repairsSelect.innerHTML = ''; // Clear repairs when changing brand
 
-        if (selectedBrand) {
-          const models = getModelsForBrand(selectedBrand);
-          models.forEach((model, index) => {
-            const option = document.createElement('option');
-            option.value = index;
-            option.text = model;
-            modelSelect.appendChild(option);
-          });
+            // Populate model select options
+            modelsData[selectedBrand].forEach(model => {
+              const option = document.createElement('option');
+              option.value = model;
+              option.text = model;
+              modelsSelect.add(option);
+            });
 
-          // Enable the model dropdown
-          modelSelect.disabled = false;
-        } else {
-          // Disable the model dropdown if no brand is selected
-          modelSelect.disabled = true;
-        }
+            // Enable the model select
+            modelsSelect.disabled = false;
+          })
+          .catch(error => console.error('Error fetching models data:', error));
+      });
+
+      // Event listener for model selection
+      modelsSelect.addEventListener('change', function () {
+        const selectedModel = this.value;
+
+        // Load repairs for the selected model from the JSON
+        fetch('repairs.json')
+          .then(response => response.json())
+          .then(repairsData => {
+            // Clear previous repairs
+            repairsSelect.innerHTML = '';
+
+            // Populate repair select options
+            repairsData[selectedModel].forEach(repair => {
+              const option = document.createElement('option');
+              option.value = repair.name;
+              option.text = repair.name + ' - $' + repair.price;
+              repairsSelect.add(option);
+            });
+
+            // Enable the repair select
+            repairsSelect.disabled = false;
+          })
+          .catch(error => console.error('Error fetching repairs data:', error));
       });
     })
-    .catch(error => console.error('Error fetching data:', error));
-
-  // Function to get models based on the selected brand (you can customize this function)
-  function getModelsForBrand(brand) {
-    // For simplicity, returning a dummy array of models. You can replace this with your own logic.
-    return ["Model1", "Model2", "Model3"];
-  }
+    .catch(error => console.error('Error fetching brands data:', error));
 });
 

@@ -4,7 +4,6 @@
     "Alcatel",
     "Alldocube",
     "Apple",
-    "APPLE",
     "Asus",
     "BlackBerry",
     "Blackview",
@@ -29,7 +28,6 @@
     "Meizu",
     "Microsoft",
     "Motorola",
-    "MOTOROLA",
     "Ngm",
     "Nokia",
     "OnePlus",
@@ -38,8 +36,6 @@
     "OUKITEL",
     "Realme",
     "samsung",
-    "Samsung",
-    "SAMSUNG",
     "Sony",
     "Swissvoice",
     "TCL",
@@ -50,7 +46,6 @@
     "Wiko",
     "WIKO",
     "Xiaomi",
-    "XIAOMI",
     "Yestel",
     "ZTE"
   ]
