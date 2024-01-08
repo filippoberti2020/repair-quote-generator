@@ -23,7 +23,7 @@ MobileRepair Quotes simplifies the process of obtaining repair quotes for your m
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/your-username/MobileRepair-Quotes.git
+    git clone https://github.com/filippoberti2020/repair-quote-generator.git
     ```
 
 2. Open `index.html` in your preferred web browser.
